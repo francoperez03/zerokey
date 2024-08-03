@@ -1,6 +1,14 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
 const useStore = create((set) => ({
-  count: 1,
-  inc: () => set((state) => ({ count: state.count + 1 })),
-}))
+  status: 'pendiente', // Estado inicial
+  setStatus: (newStatus) => set({ status: newStatus }),
+  statuses: {
+    PENDING: 'pendiente',
+    GENERATING: 'generando',
+    PAYING: 'pagando',
+    COMPLETED: 'finalizado'
+  }
+}));
+
+export default useStore;

@@ -2,28 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
+import SelectInput from "../selected/SelectedInput";
 
-function Select({ options, value, onChange, name, placeholder }) {
-  return (
-    <select
-      name={name}
-      value={value}
-      onChange={onChange}
-      className="w-full bg-white text-black py-2 rounded-xl border border-black placeholder:text-gray-400"
-    >
-      <option value="" disabled>
-        {placeholder}
-      </option>
-      {options.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.label}
-        </option>
-      ))}
-    </select>
-  );
-}
 
-function Checkout() {
+
+function Checkout({startInterval}) {
   const [form, setForm] = useState({
     name: "",
     cardNumber: "",
@@ -31,7 +14,6 @@ function Checkout() {
     year: "",
     cvv: "",
   });
-  console.log(form);
 
   const months = Array.from({ length: 12 }, (_, i) => ({
     value: String(i + 1).padStart(2, "0"), // Asegura que el valor tenga 2 dígitos
@@ -45,7 +27,6 @@ function Checkout() {
 
   const handleForm = (e) => {
     const { name, value } = e.target;
-  
     if (name === 'cvv') {
       // Para el campo 'cvv': solo permite números y máximo 3 caracteres
       const numericValue = value.replace(/\D/g, ''); // Elimina caracteres no numéricos
@@ -66,11 +47,6 @@ function Checkout() {
       setForm({ ...form, [name]: value });
     }
   };
-  
-  
-  
-  
-  
 
   return (
     <section className="flex flex-col gap-6 w-96 border p-4 rounded  m-auto bg-gray-50">
@@ -100,14 +76,14 @@ function Checkout() {
         <div className="flex flex-col w-full gap-2">
           <Label>Expiry</Label>
           <div className="flex gap-2  ">
-            <Select
+            <SelectInput
               options={months}
               value={form.month}
               onChange={handleForm}
               name="month"
               placeholder="MM"
             />
-            <Select
+            <SelectInput
               options={years}
               value={form.year}
               onChange={handleForm}
@@ -138,6 +114,7 @@ function Checkout() {
         <Button
           variant="outline"
           className="w-full bg-white text-black  rounded-xl "
+          onClick={() => startInterval()}
         >
           Confirm
         </Button>
