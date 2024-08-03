@@ -25,8 +25,6 @@ document.getElementById('submitGuess').addEventListener('click', async () => {
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);
     
-
-    
     display('logs', 'Verifying proof... ⌛');
     const isValid = await backend.verifyProof(proof);
     
