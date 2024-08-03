@@ -14,21 +14,20 @@ function display(container, msg) {
 document.getElementById('submitGuess').addEventListener('click', async () => {
   try {
     const x = parseInt(document.getElementById('guessInput').value);
-    const input = { x, y: 2 };
+    const bankKey = 4;
+    const input = { pan: x, expiryDate: 2, cvv: 7, bankKey };
     const backend = new BarretenbergBackend(circuit);
     const noir = new Noir(circuit);
-    
 
     display('logs', 'Generating proof... ⌛');
     const { witness } = await noir.execute(input);
-    let {publicInputs, proof} = await backend.generateProof(witness);
-    publicInputs = {...publicInputs, bankKey:123}
-    console.log({publicInputs})
+    let proof = await backend.generateProof(witness);
+    
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);
-    
+    console.log(proof)
     display('logs', 'Verifying proof... ⌛');
-    const isValid = await backend.verifyProof({publicInputs, proof});
+    const isValid = await backend.verifyProof(proof);
     
     if (isValid) display('logs', 'Verifying proof... ✅');
   } catch (err) {
