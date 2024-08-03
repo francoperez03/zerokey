@@ -4,6 +4,7 @@ import Checkout from "../checkout/Checkout";
 import GenerandoKey from "../../loader/GenerandKey";
 import Payment from "../../loader/Payment";
 import Completed from "../../loader/Completed";
+import Product from "../product/Product";
 
 function Demo() {
   const { status, setStatus, statuses } = useStore();
@@ -49,8 +50,13 @@ function Demo() {
     <div className="flex flex-col items-center justify-center">
       {status === statuses.PENDING && (
         <div>
-          <h5 className="text-lg pb-2 text-center">Enter fictitious card information</h5>
-          <Checkout startInterval={startInterval} />
+          <h5 className="text-lg pb-2 text-center">
+            Enter fictitious card information
+          </h5>
+          <div className="flex gap-12">
+            <Product />
+            <Checkout startInterval={startInterval} />
+          </div>
         </div>
       )}
       {status === statuses.GENERATING && <GenerandoKey />}

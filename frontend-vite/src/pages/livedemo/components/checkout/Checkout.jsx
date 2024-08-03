@@ -49,7 +49,7 @@ function Checkout({startInterval}) {
   };
 
   return (
-    <section className="flex flex-col gap-6 w-96 border p-4 rounded  m-auto bg-gray-50">
+    <section className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
       <div className="flex flex-col gap-2">
         <Label className="">Name on Card</Label>
         <Input
