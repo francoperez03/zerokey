@@ -49,7 +49,56 @@ function Checkout({startInterval}) {
   };
 
   return (
-    <section className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
+    <div className="flex gap-12">
+      <div className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
+      <div className="flex flex-col gap-2">
+        <Label className="">Email</Label>
+        <Input
+          type="text"
+          name="name"
+          className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
+          placeholder="Johnsmith@gmail.com"
+          value={form.name}
+          onChange={handleForm}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label className="">Operating URL</Label>
+        <Input
+          type="text"
+          name="name"
+          className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
+          placeholder="www.amazon.com"
+          value={form.name}
+          onChange={handleForm}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label className="">Card Alias</Label>
+        <Input
+          type="text"
+          name="name"
+          className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
+          placeholder="John Visa HSBC Amazon"
+          value={form.name}
+          onChange={handleForm}
+        />
+      </div>
+      <div className="flex flex-col gap-2">
+        <Label className="">Utility Time</Label>
+        <Input
+          type="text"
+          name="cardNumber"
+          className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
+          placeholder="0000 0000 0000 0000"
+          value={form.cardNumber}
+          onChange={handleForm}
+        />
+      </div>
+      
+       
+    </div>
+    <div className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
       <div className="flex flex-col gap-2">
         <Label className="">Name on Card</Label>
         <Input
@@ -119,7 +168,8 @@ function Checkout({startInterval}) {
           Confirm
         </Button>
       </div>
-    </section>
+    </div>
+    </div>
   );
 }
 
