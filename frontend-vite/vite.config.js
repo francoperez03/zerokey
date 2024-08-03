@@ -43,6 +43,11 @@ export default defineConfig(({ command }) => {
         command === 'serve' ? wasmContentTypePlugin : [],
         react()
       ],
+      resolve: {
+        alias: {
+          "@": path.resolve(__dirname, "./src"),
+        },
+      },
     };
   }
 
