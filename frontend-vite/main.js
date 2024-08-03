@@ -17,7 +17,7 @@ document.getElementById('submitGuess').addEventListener('click', async () => {
     const input = { x, y: 2 };
     const backend = new BarretenbergBackend(circuit);
     const noir = new Noir(circuit);
-    await setup(); // let's squeeze our wasm inits here
+    
 
     display('logs', 'Generating proof... ⌛');
     const { witness } = await noir.execute(input);
@@ -25,6 +25,7 @@ document.getElementById('submitGuess').addEventListener('click', async () => {
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);
   } catch (err) {
+    console.log(err);
     display('logs', 'Oh 💔 Wrong guess');
   }
 });
