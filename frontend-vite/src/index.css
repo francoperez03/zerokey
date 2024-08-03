@@ -10,3 +10,12 @@ body{
   font-family: 'Poppins', sans-serif;
 }
  
+.background-image {
+  position: relative; /* Necesario para usar pseudo-elementos */
+  background-image: url('/assets/ZEROKEY-B.png');
+  background-repeat: no-repeat;
+  background-position: left center; /* Ajusta la posición inicial */
+  background-size: 50%; /* Ajusta el tamaño de la imagen */
+  height: 400px; /* Ajusta la altura según sea necesario */
+  overflow: hidden; /* Oculta cualquier contenido que se desborde */
+}
