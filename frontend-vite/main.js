@@ -21,12 +21,14 @@ document.getElementById('submitGuess').addEventListener('click', async () => {
 
     display('logs', 'Generating proof... ⌛');
     const { witness } = await noir.execute(input);
-    const proof = await backend.generateProof(witness);
+    let {publicInputs, proof} = await backend.generateProof(witness);
+    publicInputs = {...publicInputs, bankKey:123}
+    console.log({publicInputs})
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);
     
     display('logs', 'Verifying proof... ⌛');
-    const isValid = await backend.verifyProof(proof);
+    const isValid = await backend.verifyProof({publicInputs, proof});
     
     if (isValid) display('logs', 'Verifying proof... ✅');
   } catch (err) {
