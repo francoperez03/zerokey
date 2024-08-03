@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useState } from "react";
 import SelectInput from "../selected/SelectedInput";
+import { postTest } from "../../actions";
 
 
 
@@ -13,7 +14,12 @@ function Checkout({startInterval}) {
     month: "",
     year: "",
     cvv: "",
+    email: "",
+    url: "",
+    alias: "",
+    days: "",
   });
+
 
   const months = Array.from({ length: 12 }, (_, i) => ({
     value: String(i + 1).padStart(2, "0"), // Asegura que el valor tenga 2 dígitos
@@ -31,6 +37,10 @@ function Checkout({startInterval}) {
       // Para el campo 'cvv': solo permite números y máximo 3 caracteres
       const numericValue = value.replace(/\D/g, ''); // Elimina caracteres no numéricos
       setForm({ ...form, [name]: numericValue.slice(0, 3) }); // Limita a 3 caracteres
+     } else if (name === 'days') {
+        // Para el campo 'cvv': solo permite números y máximo 3 caracteres
+        const numericValue = value.replace(/\D/g, ''); // Elimina caracteres no numéricos
+        setForm({ ...form, [name]: numericValue.slice(0, 3) }); // Limita a 3 caracteres
     } else if (name === 'cardNumber') {
       // Para el campo 'cardNumber': solo permite números y máximo 16 caracteres
       const numericValue = value.replace(/\D/g, ''); // Elimina caracteres no numéricos
@@ -49,16 +59,16 @@ function Checkout({startInterval}) {
   };
 
   return (
-    <div className="flex gap-12">
-      <div className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
+    <div className="flex gap-12 shadow-md shadow-gray-300 p-6">
+      <div className="flex flex-col gap-6 size-96 border p-4 rounded  m-auto bg-gray-50">
       <div className="flex flex-col gap-2">
         <Label className="">Email</Label>
         <Input
           type="text"
-          name="name"
+          name="email"
           className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
           placeholder="Johnsmith@gmail.com"
-          value={form.name}
+          value={form.email}
           onChange={handleForm}
         />
       </div>
@@ -66,10 +76,10 @@ function Checkout({startInterval}) {
         <Label className="">Operating URL</Label>
         <Input
           type="text"
-          name="name"
+          name="url"
           className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
           placeholder="www.amazon.com"
-          value={form.name}
+          value={form.url}
           onChange={handleForm}
         />
       </div>
@@ -77,28 +87,28 @@ function Checkout({startInterval}) {
         <Label className="">Card Alias</Label>
         <Input
           type="text"
-          name="name"
+          name="alias"
           className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
           placeholder="John Visa HSBC Amazon"
-          value={form.name}
+          value={form.alias}
           onChange={handleForm}
         />
       </div>
       <div className="flex flex-col gap-2">
-        <Label className="">Utility Time</Label>
+        <Label className="">Utility Time <span className="text-xs font-light">(in days)</span></Label>
         <Input
           type="text"
-          name="cardNumber"
+          name="days"
           className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
-          placeholder="0000 0000 0000 0000"
-          value={form.cardNumber}
+          placeholder="60"
+          value={form.days}
           onChange={handleForm}
         />
       </div>
       
        
     </div>
-    <div className="flex flex-col gap-6 size-96 border p-4 rounded shadow-md shadow-gray-300 m-auto bg-gray-50">
+    <div className="flex flex-col gap-6 size-96 border p-4 rounded   m-auto bg-gray-50">
       <div className="flex flex-col gap-2">
         <Label className="">Name on Card</Label>
         <Input
@@ -163,7 +173,7 @@ function Checkout({startInterval}) {
         <Button
           variant="outline"
           className="w-full bg-white text-black  rounded-xl "
-          onClick={() => startInterval()}
+          onClick={() => {startInterval(); postTest(form)}}
         >
           Confirm
         </Button>
