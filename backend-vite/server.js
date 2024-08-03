@@ -18,7 +18,7 @@ fastify.register(fastifyCors, {
 })
 
 // Función para manejar la generación y verificación de pruebas
-async function handlePurchase({proof}) {
+async function handlePurchase(proof) {
   try {
     const bankKey = "4"
     console.log({bankKey})
@@ -39,10 +39,25 @@ async function handlePurchase({proof}) {
   }
 }
 
+function base64ToUint8Array(base64String) {
+  const buffer = Buffer.from(base64String, 'base64');
+  return new Uint8Array(buffer);
+}
+
+function base64ToObject(base64String) {
+  const jsonString = Buffer.from(base64String, 'base64').toString('utf-8');
+  return JSON.parse(jsonString);
+}
+
+
 // Definir endpoint /purchase
 fastify.post('/purchase', async (request, reply) => {
-  const { proof } = request.body;
-  const result = await handlePurchase({proof});
+  const { proof, publicInputs } = request.body;
+
+  const decodedProof = base64ToUint8Array(proof);
+  const decodedPublicInputs = base64ToObject(publicInputs);
+  console.log(decodedProof);
+  const result = await handlePurchase({proof: decodedProof, publicInputs: decodedPublicInputs});
   reply.send(result);
 });
 
