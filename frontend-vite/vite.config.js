@@ -41,11 +41,10 @@ export default defineConfig(({ command }) => {
           hook: 'buildStart',
         }),
         command === 'serve' ? wasmContentTypePlugin : [],
+        react()
       ],
     };
   }
 
-  return {
-    plugins: [react()],
-  };
+  return {};
 });
