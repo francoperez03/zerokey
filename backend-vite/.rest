@@ -1,0 +1,11 @@
+### GET /purchase
+GET http://localhost:3000/purchase
+
+### GET /purchase?query
+
+POST http://localhost:3000/purchase
+Content-Type: application/json
+
+{
+  "x": 3
+}

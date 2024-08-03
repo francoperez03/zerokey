@@ -24,6 +24,13 @@ document.getElementById('submitGuess').addEventListener('click', async () => {
     const proof = await backend.generateProof(witness);
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);
+    
+
+    
+    display('logs', 'Verifying proof... ⌛');
+    const isValid = await backend.verifyProof(proof);
+    
+    if (isValid) display('logs', 'Verifying proof... ✅');
   } catch (err) {
     console.log(err);
     display('logs', 'Oh 💔 Wrong guess');
