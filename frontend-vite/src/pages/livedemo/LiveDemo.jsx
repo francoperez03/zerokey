@@ -1,11 +1,11 @@
-import Checkout from "./components/checkout/Checkout"
+import Demo from "./components/demo/Demo"
 import Home from "./components/home/Home"
 
 function LiveDemo() {
   return (
     <main>
       <Home />
-      <Checkout />
+      <Demo />
     </main>
   )
 }

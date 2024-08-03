@@ -6,7 +6,7 @@ function Navbar() {
       <ol className="flex gap-8 text-white items-center">
         <li className="hover:cursor-pointer">
           <a href="/">
-          <img src="/assets/Q.png" alt="" className="w-[50px]" />
+          <img src="/assets/ZEROKEY-W.png" alt="" className="w-[100px] -mb-2" />
           </a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
