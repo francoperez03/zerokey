@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import useStore from "../../store/state";
 import Checkout from "../checkout/Checkout";
-import StatusUpdater from "../testState";
+import GenerandoKey from "../../loader/GenerandKey";
+import Payment from "../../loader/Payment";
+import Completed from "../../loader/Completed";
 
 function Demo() {
 
@@ -47,12 +49,11 @@ function Demo() {
   return (
     <div className="flex flex-col items-center justify-center">
       <h5 className="text-lg pb-2">Enter fictitious card information</h5>
-      <Checkout startInterval={startInterval} />
-      {status === statuses.PENDING && <h5 className="text-lg pt-2">Payment pendiente!</h5>}
-      {status === statuses.GENERATING && <h5 className="text-lg pt-2">Payment generando!</h5>}
-      {status === statuses.PAYING && <h5 className="text-lg pt-2">Payment pagando!</h5>}
-      {status === statuses.COMPLETED && <h5 className="text-lg pt-2">Payment completed!</h5>}
-      <StatusUpdater/>
+      
+      {status === statuses.PENDING &&<Checkout startInterval={startInterval} /> }
+      {status === statuses.GENERATING && <GenerandoKey />}
+      {status === statuses.PAYING && <Payment/>}
+      {status === statuses.COMPLETED && <Completed/>}
     </div>
   );
 }
