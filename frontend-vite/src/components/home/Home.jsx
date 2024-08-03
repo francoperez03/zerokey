@@ -3,13 +3,13 @@ import Navbar from "../navbar/Navbar";
 
 function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between">
+    <main className="flex min-h-screen w-full flex-col items-center justify-between">
       <Navbar />
-      <div className="flex justify-between items-center w-full px-8">
-        <div className="flex flex-col ">
-          <img src="/assets/ZEROKEY.png" alt="" className="w-[150px]" />
-          <h1 className="text-7xl font-medium mb-4">Solucinamos tu problema</h1>
-          <p className="text-2xl">con el mejor equipo de programadores</p>
+      <div className="flex justify-between items-center w-full   px-8">
+        <div className="flex flex-col w-1/2">
+          <img src="/assets/ZEROKEY-B.png" alt="" className="w-[150px]" />
+          <h1 className="text-6xl   font-medium mb-4">Discover the new layer of security for online payments.</h1>
+          <p className="text-2xl">Guarantee the security of your payments with zkProof technology: Security without compromises.</p>
         </div>
         <img
           src="/assets/creditCard.jpg"
@@ -17,7 +17,7 @@ function Home() {
           className="w-[450px] rounded-2xl"
         />
       </div>
-      <MdOutlineKeyboardDoubleArrowDown className="text-5xl" />
+      <MdOutlineKeyboardDoubleArrowDown className="text-5xl mb-2 hover:cursor-pointer hover:scale-110 transform transition" />
     </main>
   );
 }
