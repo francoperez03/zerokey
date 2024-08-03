@@ -5,7 +5,9 @@ function Navbar() {
     <nav className="flex w-full  bg-[#001E35] py-1 px-8   justify-between items-center">
       <ol className="flex gap-8 text-white items-center">
         <li className="hover:cursor-pointer">
+          <a href="/">
           <img src="/assets/Q.png" alt="" className="w-[50px]" />
+          </a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
           <a href=""></a>ADN
