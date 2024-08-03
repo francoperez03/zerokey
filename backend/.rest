@@ -1,0 +1,5 @@
+### GET /purchase
+GET http://localhost:3000/purchase
+
+### GET /purchase?query
+GET http://localhost:3000/purchase?proof=123456

@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "fastify": "^4.28.1",
+    "pino": "^9.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4"
+  },
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  }
+}
