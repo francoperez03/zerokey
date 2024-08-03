@@ -1,5 +1,5 @@
+import Navbar from "@/components/navbar/Navbar";
 import { MdOutlineKeyboardDoubleArrowDown } from "react-icons/md";
-import Navbar from "../navbar/Navbar";
 
 function Home() {
   return (
@@ -30,7 +30,7 @@ function Home() {
           <img
             src="/assets/creditCard.jpg"
             alt="Credit Card"
-            className="w-[450px] rounded-2xl"
+            className="w-[500px] rounded-2xl"
           />
         </div>
         <MdOutlineKeyboardDoubleArrowDown className="text-5xl mb-2 hover:cursor-pointer hover:scale-110 transform transition" />
