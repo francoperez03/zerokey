@@ -38,7 +38,7 @@ async function handlePurchase({proof}) {
 }
 
 
-export async function generateProof({ pan, expiryDate, cvv}) {
+async function generateProof({ pan, expiryDate, cvv}) {
   try {
     const backend = new BarretenbergBackend(circuit);
     const noir = new Noir(circuit);
@@ -60,7 +60,7 @@ export async function generateProof({ pan, expiryDate, cvv}) {
   }
 }
 
-export async function handleSave({ email, proof }) {
+async function handleSave({ email, proof }) {
   try {
     console.log('Proof:', proof);
     if (!proofs[email]) {
