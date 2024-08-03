@@ -3,12 +3,13 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "node server.js",
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fastify/cors": "^9.0.1",
     "@noir-lang/backend_barretenberg": "^0.31.0",
     "@noir-lang/noir_js": "^0.31.0",
     "fastify": "^4.28.1",

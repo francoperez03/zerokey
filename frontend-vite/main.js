@@ -14,14 +14,13 @@ function display(container, msg) {
 document.getElementById('submitGuess').addEventListener('click', async () => {
   try {
     const x = parseInt(document.getElementById('guessInput').value);
-    const bankKey = 4;
-    const input = { pan: x, expiryDate: 2, cvv: 7, bankKey };
+    const input = { pan: x, expiryDate: 2, cvv: 7 };
     const backend = new BarretenbergBackend(circuit);
     const noir = new Noir(circuit);
 
     display('logs', 'Generating proof... ⌛');
     const { witness } = await noir.execute(input);
-    let proof = await backend.generateProof(witness);
+    let {publicInputs, proof} = await backend.generateProof(witness);
     
     display('logs', 'Generating proof... ✅');
     display('results', proof.proof);

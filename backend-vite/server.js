@@ -1,23 +1,29 @@
 const fastify = require('fastify')({ logger: true });
+const fastifyCors = require('@fastify/cors');
 const circuit = require('../hello_world/target/hello_world.json');
 const { BarretenbergBackend, BarretenbergVerifier: Verifier } = require('@noir-lang/backend_barretenberg');
 const { Noir } = require('@noir-lang/noir_js');
 
+fastify.register(fastifyCors, { 
+  origin: (origin, cb) => {
+    const hostname = new URL(origin).hostname
+    if(hostname === "localhost"){
+      //  Request from localhost will pass
+      cb(null, true)
+      return
+    }
+    // Generate an error on other origins, disabling access
+    cb(new Error("Not allowed"), false)
+  }
+})
+
 // Función para manejar la generación y verificación de pruebas
-async function handlePurchase(x) {
+async function handlePurchase({proof}) {
   try {
-    const input = { x, y: 2 };
+    const bankKey = "4"
+    console.log({bankKey})
     const backend = new BarretenbergBackend(circuit);
-    const noir = new Noir(circuit);
 
-    // Generar prueba
-    console.log('Generating proof... ⌛');
-    const { witness } = await noir.execute(input);
-    const proof = await backend.generateProof(witness);
-    console.log('Generating proof... ✅');
-    console.log('Proof:', proof.proof);
-
-    // Verificar prueba
     console.log('Verifying proof... ⌛');
     const isValid = await backend.verifyProof(proof);
 
@@ -35,12 +41,8 @@ async function handlePurchase(x) {
 
 // Definir endpoint /purchase
 fastify.post('/purchase', async (request, reply) => {
-  const { x } = request.body;
-  if (typeof x !== 'number') {
-    return reply.status(400).send({ success: false, message: 'Invalid input. Please provide a number.' });
-  }
-
-  const result = await handlePurchase(x);
+  const { proof } = request.body;
+  const result = await handlePurchase({proof});
   reply.send(result);
 });
 
