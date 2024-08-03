@@ -1,14 +1,15 @@
-import React from 'react'
-import { FaCheck } from 'react-icons/fa'
+import React from "react";
+import { FaCheck } from "react-icons/fa";
 
 function Completed() {
   return (
     <div>
-        <FaCheck className='text-3xl'/>
-        <h5>Pago procesado correctamente</h5>
-        
+      <div className="flex flex-col gap-4 p-4 justify-center items-center">
+        <FaCheck className="text-7xl text-green-800" />
+        <p className="text-xl">Pago generado </p>
+      </div>
     </div>
-  )
+  );
 }
 
-export default Completed
+export default Completed;
