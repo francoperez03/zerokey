@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
-import LiveDemo from './components/demo/LiveDemo';
-import Landing from './components/landing/Landing';
-import Test from './components/test/Test';
+import Test from './pages/test/Test';
+import Landing from './pages/landing/Landing';
+import LiveDemo from './pages/livedemo/LiveDemo';
 
 function App() {
   return (
