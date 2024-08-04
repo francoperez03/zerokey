@@ -24,7 +24,7 @@ export async function generateProof({ pan, expiryDate, cvv}) {
     const noir = new Noir(circuit);
 
     console.log('Generating proof... ⌛');
-    const { witness } = await noir.execute({ pan, expiryDate, cvv, bankKey:"4"});
+    const { witness } = await noir.execute({ pan, expiryDate, cvv, bankKey: "4"});
     const { publicInputs, proof } = await backend.generateProof(witness);
 
     console.log('Generating proof... ✅');

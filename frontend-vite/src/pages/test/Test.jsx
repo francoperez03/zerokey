@@ -9,27 +9,23 @@ function toBase64(obj) {
 
 function Test() {
   const [inputValue, setInputValue] = useState('');
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [emailSearch, setEmailSearch] = useState('');
+  const [nameSearch, setNameSearch] = useState('');
+  const [proof, setProof] = useState('');
 
   const handleButtonClick = async () => {
-
-    const proofResult = await generateProof({pan:"1", expiryDate:"2", cvv:"7"});
-    if (proofResult.success) {
+    console.log({proof})
       try {
-        const payload = {
-          proof: proofResult.proof,
-          publicInputs: proofResult.publicInputs
-        };
-        const base64Payload = JSON.stringify(payload); // JSON string para enviar
-  
         const response = await fetch("http://localhost:3000/purchase", {
           method: "POST",
           headers: {
             "Content-Type": "application/json" // Mantenemos el JSON para simplicidad
           },
-          body: base64Payload
+          body: JSON.stringify({proof})
         });
         
-        console.log({response})
         if (!response.ok) {
           throw new Error("Error en la solicitud");
         }
@@ -39,25 +35,100 @@ function Test() {
       } catch (error) {
         console.error("Error:", error);
       }
-    } else {
-      console.error(proofResult.message);
-    }
   };
 
-  return (
+  const handleAddCard = async () => {
+      try {
+        const payload = {
+          email,
+          name,
+          pan: "1",
+          expiryDate: "4",
+          cvv: "7",
+          ttl: "8"
+        };
+        const body = JSON.stringify(payload); // JSON string para enviar
+  
+        const response = await fetch("http://localhost:3000/proofs", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json" // Mantenemos el JSON para simplicidad
+          },
+          body
+        });
+        
+        if (!response.ok) {
+          throw new Error("Error en la solicitud");
+        }
+
+        const data = await response.json();
+        console.log("Respuesta del servidor:", data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+  };
+
+  const handleGetCard = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/proofs?email=${emailSearch}&name=${nameSearch}`);
+        if (!response.ok) {
+          throw new Error("Error en la solicitud");
+        }
+
+        const data = await response.json();
+        setProof({proof: data.proof, publicInputs: data.publicInputs});
+        console.log("Respuesta del servidor:", data);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+  };
+
+  return (<>
     <div>
       <input
-        id="guessInput"
+        id="email"
         type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        placeholder="Enter number"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Enter Email"
       />
-      <Button onClick={handleButtonClick} variant="outline">
-        Buy
+      <input
+        id="name"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Enter Name"
+      />
+      <Button onClick={handleAddCard} variant="outline">
+        Agregar tarjeta
       </Button>
-    </div>
-  );
+      </div>
+
+      <div>
+      <input
+        id="emailSearch"
+        type="text"
+        value={emailSearch}
+        onChange={(e) => setEmailSearch(e.target.value)}
+        placeholder="Enter Email to search"
+      />
+      <input
+        id="nameSearch"
+        type="text"
+        value={nameSearch}
+        onChange={(e) => setNameSearch(e.target.value)}
+        placeholder="Enter Name to search"
+      />
+      <Button onClick={handleGetCard} variant="outline">
+        Traer Tarjeta
+      </Button>
+      </div>
+      <div>
+        <Button onClick={handleButtonClick} variant="outline">
+          Buy
+        </Button>
+      </div>
+  </>);
 }
 
 export default Test;
