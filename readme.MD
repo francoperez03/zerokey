@@ -22,8 +22,8 @@ Aside from filoshopping, the financial industry, especially banks, will save mil
 
 ## Project Structure
 
-### Contrato verificador
-[Contrato verificado  en ScrollScan](https://sepolia.scrollscan.com/address/0x31563b09193329e6836144c54d81e8d25453908e#code)
+### Smart contract verifier
+[Contract verified on ScrollScan](https://sepolia.scrollscan.com/address/0x31563b09193329e6836144c54d81e8d25453908e#code)
 
 ### Folder structure
 
