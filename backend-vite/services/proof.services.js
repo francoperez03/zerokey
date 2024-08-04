@@ -53,15 +53,19 @@ async function handleSave({ email, proof, name }) {
 }
 
 async function getProof({ email, name }) {
-  console.log('-----------')
-  console.log({proofs})
   const mid = proofs[email];
   const proof = mid[name];
   return proof
 }
 
+async function listProofs({ email, name }) {
+  const proofs = proofs[email];
+  return proofs
+}
+
 module.exports = {
   generateProof,
   handleSave,
-  getProof
+  getProof,
+  listProofs
 };

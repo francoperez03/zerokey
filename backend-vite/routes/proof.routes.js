@@ -1,5 +1,5 @@
 
-const { generateProof, handleSave, getProof } = require('../services/proof.services');
+const { generateProof, handleSave, listProofs } = require('../services/proof.services');
 
 async function routes(fastify, options) {
   fastify.post('/proofs', async (request, reply) => {
@@ -13,13 +13,12 @@ async function routes(fastify, options) {
     }
   });
 
-  fastify.get('/proofs', async (request, reply) => {
-    const { email, name } = request.query;
-    try {
 
-      const proof = await getProof({ email, name });
-      console.log({proof})
-      reply.send(proof);
+  fastify.get('/proofs', async (request, reply) => {
+    const { email } = request.query;
+    try {
+      const proofs = await listProofs({ email });
+      reply.send(proofs);
     } catch (error) {
       reply.status(404).send({ success: false, message: 'Proof not found' });
     }
