@@ -17,13 +17,45 @@ Aside from filoshopping, the financial industry, especially banks, will save mil
 
 - **Zero-Knowledge Proofs:** Convert credit card information into secure Zero-Knowledge proofs that eliminate the need to store sensitive data.
 - **Phishing Protection:** Generate domain-specific proofs to prevent phishing attacks.
-- **PCI SSC Compliant:** Enhance transaction security with PCI SSC standards compliance.
+- **PCI SSD Compliant:** Enhance transaction security with PCI SSC standards compliance.
 - **E-commerce Integration:** Simple integration with e-commerce platforms for seamless transactions.
 - **Fraud Reduction:** Save millions by reducing fraud caused by data breaches and phishing attacks.
 
 ## Project Structure
 
 The project consists of three main components:
+
+
+## Folder structure
+
+```bash
+ZEROKEY/
+│
+├── backend/
+│   ├── providers/
+│   ├── routes/
+│   ├── services/
+│   ├── package.json
+│   ├── server.js
+│
+├── circuit/
+│   ├── src/
+│   │   ├── main.nr
+│   ├── target/
+│   ├── Nargo.toml
+│   └── Prover.toml
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── lib/
+│   │   └── pages/
+│   └── package.json
+```
+
+
 
 1. **Circuit Folder:**
    - Contains `main.nr`, used to compile the zkProof circuit in Scroll.
@@ -47,7 +79,7 @@ To get started with ZeroKey, follow these steps:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/zerokey.git
+git clone https://github.com/francoperez03/zerokey
 cd zerokey
 ```
 
@@ -68,6 +100,7 @@ npm install
 ### Compile the Circuit
 ```bash
 cd circuit
+nargo check
 nargo compile
 ```
 
@@ -84,4 +117,3 @@ npm run dev
 cd frontend
 npm run dev
 ```
-
