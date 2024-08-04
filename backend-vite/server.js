@@ -1,6 +1,6 @@
 const fastify = require('fastify')({ logger: true });
 const fastifyCors = require('@fastify/cors');
-const circuit = require('../hello_world/target/hello_world.json');
+const circuit = require('../circuit/target/hello_world.json');
 const { BarretenbergBackend, BarretenbergVerifier: Verifier } = require('@noir-lang/backend_barretenberg');
 const { Noir } = require('@noir-lang/noir_js');
 const proofs = {}
@@ -16,7 +16,7 @@ fastify.register(fastifyCors, {
 })
 
 // Función para manejar la generación y verificación de pruebas
-async function handlePurchase({proof}) {
+async function handleVerify({proof}) {
   try {
     const bankKey = "4"
     console.log({bankKey})
@@ -45,7 +45,7 @@ async function generateProof({ pan, expiryDate, cvv}) {
 
     console.log('Generating proof... ⌛');
     const { witness } = await noir.execute({ pan, expiryDate, cvv, bankKey:"4"});
-    const { publicInputs, proof } = await backend.generateProof(witness);
+    const proof = await backend.generateProof(witness);
 
     console.log('Generating proof... ✅');
     console.log('Proof:', proof);
@@ -92,6 +92,13 @@ fastify.post('/proofs', async (request, reply) => {
 fastify.get('/proofs', async (request, reply) => {
   const { cvv, pan, expirtyDate } = request.body;
   const proofResult = await generateProof({ cvv, pan, expirtyDate })
+  const result = await handleSave({proof: proofResult});
+  reply.send(result);
+});
+
+fastify.post('/verify', async (proof, ) => {
+  const { proof } = request.body;
+  const proofResult = await handleVerify({ proof })
   const result = await handleSave({proof: proofResult});
   reply.send(result);
 });

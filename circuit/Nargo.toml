@@ -1,5 +1,5 @@
 [package]
-name = "hello_world"
+name = "circuit"
 type = "bin"
 authors = [""]
 compiler_version = ">=0.31.0"
