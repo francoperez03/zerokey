@@ -120,46 +120,46 @@ npm run dev
 ## API Endpoints
 
 ### Registering a Card:
-   The POST /proofs endpoint is used to register a credit card within the system. This process involves creating a proof associated with the card and its user.
+The POST /proofs endpoint is used to register a credit card within the system. This process involves creating a proof associated with the card and its user.  
 
-   POST /proofs
-      This endpoint accepts a POST request with several arguments necessary for registering a credit card. Below are the arguments and their descriptions:
-      Arguments:
-         - cvv: (string) The card's security code, typically a 3 or 4-digit number known as the CVV (Card Verification Value). This is a sensitive field.
+**POST /proofs**  
+This endpoint accepts a POST request with several arguments necessary for registering a credit card. Below are the arguments and their descriptions:  
+Arguments:  
+- cvv: (string) The card's security code, typically a 3 or 4-digit number known as the CVV (Card Verification Value). This is a sensitive field.  
 
-         - pan: (string) The Primary Account Number, or the credit card number itself. This is a unique identifier for the card and is essential for processing transactions.
+- pan: (string) The Primary Account Number, or the credit card number itself. This is a unique identifier for the card and is essential for processing transactions.  
 
-         - expiryDate: (string) The expiration date of the card, usually in the format MM/YY or MM/YYYY. This field is used to verify that the card is still valid.
+- expiryDate: (string) The expiration date of the card, usually in the format MM/YY or MM/YYYY. This field is used to verify that the card is still valid.  
 
-         - email: (string) The email address of the user to whom the card belongs. This allows for association of the card with a specific user account and facilitates communication or notifications.
+- email: (string) The email address of the user to whom the card belongs. This allows for association of the card with a specific user account and facilitates communication or notifications.  
 
-         - name: (string) A friendly name assigned to the card. This can be used for easy identification of the card within the user's account, especially if they have multiple cards.
+- name: (string) A friendly name assigned to the card. This can be used for easy identification of the card within the user's account, especially if they have multiple cards.  
 
-         - ttl: (integer) The time-to-live of the proof in seconds. This determines how long the proof remains valid before it expires and needs to be regenerated.
+- ttl: (integer) The time-to-live of the proof in seconds. This determines how long the proof remains valid before it expires and needs to be regenerated.  
 
 #### List all the Cards for an email:
-   GET /proofs
-      This endpoint retrieves a list of all registered credit cards associated with a specific email address. It's useful for displaying all card information linked to a user, typically in a user dashboard or account management system.
-      Query:
-         - email: (string) The email address associated with the user's registered credit cards. This argument is required to identify and return the relevant cards.
+**GET /proofs**  
+This endpoint retrieves a list of all registered credit cards associated with a specific email address. It's useful for displaying all card information linked to a user, typically in a user dashboard or account management system.  
+Query:  
+- email: (string) The email address associated with the user's registered credit cards. This argument is required to identify and return the relevant cards.  
 
-      example:
-      ```bash
-         GET /proofs?email=user@example.com
-      ```
+example:
+```bash
+GET /proofs?email=user@example.com
+```
 
 ### Use a proof to purchase a product      
-   POST /purchase
-      This endpoint accepts a POST request with specific arguments required to initiate a purchase. It validates the proof associated with the user's card, processes the transaction, and returns a response indicating the success or failure of the purchase.
-      Arguments:
-         - email: (string) The email address of the user to whom the card belongs. This allows for association of the card with a specific user account and facilitates communication or notifications.
+**POST /purchase**  
+This endpoint accepts a POST request with specific arguments required to initiate a purchase. It validates the proof associated with the user's card, processes the transaction, and returns a response indicating the success or failure of the purchase.  
+Arguments:  
+- email: (string) The email address of the user to whom the card belongs. This allows for association of the card with a specific user account and facilitates communication or notifications.  
 
-         - name: (string) A friendly name assigned to the card. This can be used for easy identification of the card within the user's account, especially if they have multiple cards.
+- name: (string) A friendly name assigned to the card. This can be used for easy identification of the card within the user's account, especially if they have multiple cards.  
 
 
 ### Verify the proof using a smart contract
-POST /verify
-   This endpoint accepts a POST request with specific arguments required to verify a proof. It sends the proof to the smart contract, which performs the necessary checks to validate the proof's authenticity and correctness.
-   Arguments:
-      - proof: (string): The cryptographic proof that needs to be verified. This argument contains the proof data in a hexadecimal string format, which is required by the smart contract for validation. The proof must be formatted correctly and match the expected structure defined in the smart contract.
+**POST /verify**  
+This endpoint accepts a POST request with specific arguments required to verify a proof. It sends the proof to the smart contract, which performs the necessary checks to validate the proof's authenticity and correctness.  
+Arguments:  
+- proof: (string): The cryptographic proof that needs to be verified. This argument contains the proof data in a hexadecimal string format, which is required by the smart contract for validation. The proof must be formatted correctly and match the expected structure defined in the smart contract.  
 
