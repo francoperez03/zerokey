@@ -2,7 +2,7 @@ import { Button } from "../ui/button";
 
 function Navbar() {
   return (
-    <nav className="flex w-full  bg-[#001E35] py-1 px-8   justify-between items-center">
+    <nav className="flex w-full  bg-[#001E35] py-2 px-8   justify-between items-center">
       <ol className="flex gap-8 text-white items-center">
         <li className="hover:cursor-pointer">
           <a href="/">
@@ -10,13 +10,25 @@ function Navbar() {
           </a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href=""></a>ADN
+          <a href="#problem">Cost of fraud</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href=""></a>Example
+          <a href="#partners">Partner</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href=""></a>About
+          <a href="#ourmission">Our Mission</a>
+        </li>
+        <li className="hover:cursor-pointer hover:text-red-500">
+          <a href="">Process</a>
+        </li>
+        <li className="hover:cursor-pointer hover:text-red-500">
+          <a href="">Demo</a>
+        </li>
+        <li className="hover:cursor-pointer hover:text-red-500">
+          <a href="">Conect whith Us</a>
+        </li>
+        <li className="hover:cursor-pointer hover:text-red-500">
+          <a href="#about">About us</a>
         </li>
       </ol>
       <li>
