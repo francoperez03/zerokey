@@ -4,6 +4,8 @@ import useStore from "../livedemo/store/state";
 import GenerandoKey from "../livedemo/loader/GenerandKey";
 import Completed from "../livedemo/loader/Completed";
 import Validated from "../livedemo/loader/Validated";
+import Payment from "../livedemo/loader/Payment";
+import PaymentSuccess from "../livedemo/loader/PaymentSuccess";
 
 function Checkout() {
   const { status, setStatus, statuses } = useStore();
@@ -72,24 +74,24 @@ function Checkout() {
   }, [intervalId]);
 
   return (
-    <div className="">
-      <h3 className="text-3xl text-center py-12">
+    <div className="bg-gray-800 h-screen">
+      <h3 className="text-4xl text-center text-white py-8 ">
         Prueba la nueva capa de seguridad en tiempo real
       </h3>
       {(status === statuses.PENDING ||
         status === statuses.CVV ||
         status === statuses.ZQ) && (
-        <>
+        <div className="bg-white w-[70%] m-auto py-6 rounded shadow shadow-gray-300">
           <p className="text-center text-lg pb-4">
             Selecciona el método de pago
           </p>
           <SelectedCard startInterval={startInterval} />
-        </>
+        </div>
       )}
       <div className="flex flex-col items-center justify-center">
-        {status === statuses.GENERATING && <GenerandoKey />}
-        {status === statuses.VERIFICANDO && <Validated />}
-        {status === statuses.COMPLETED && <Completed />}
+        {status === statuses.GENERATING && <Validated />}
+        {status === statuses.VERIFICANDO && <Payment />}
+        {status === statuses.COMPLETED && <PaymentSuccess />}
       </div>
     </div>
   );
