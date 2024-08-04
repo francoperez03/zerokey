@@ -1,4 +1,4 @@
-fn main(pan: Field, expiryDate: Field, cvv: Field, bankKey: pub Field) {
+fn main(pan: Field, expiryDate: Field, cvv: Field, bankKey: Field) {
     let computed_cvv = pan + expiryDate + bankKey;
     assert(computed_cvv == cvv);
 }

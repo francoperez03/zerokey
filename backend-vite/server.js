@@ -3,7 +3,8 @@ const fastifyCors = require('@fastify/cors');
 const circuit = require('../hello_world/target/hello_world.json');
 const { BarretenbergBackend, BarretenbergVerifier: Verifier } = require('@noir-lang/backend_barretenberg');
 const { Noir } = require('@noir-lang/noir_js');
-const proofs = {}
+let proofs = {};
+
 fastify.register(fastifyCors, { 
   origin: (origin, cb) => {
     const hostname = new URL(origin).hostname
@@ -17,13 +18,16 @@ fastify.register(fastifyCors, {
 
 // Función para manejar la generación y verificación de pruebas
 async function handlePurchase({proof}) {
+  console.log({proof});
   try {
-    const bankKey = "4"
-    console.log({bankKey})
+
+    const decodedProof = base64ToUint8Array(proof.proof);
+    const decodedPublicInputs = base64ToObject(proof.publicInputs);
+
     const backend = new BarretenbergBackend(circuit);
 
     console.log('Verifying proof... ⌛');
-    const isValid = await backend.verifyProof(proof);
+    const isValid = await backend.verifyProof({proof: decodedProof, publicInputs: decodedPublicInputs});
 
     if (isValid) {
       console.log('Verifying proof... ✅');
@@ -37,14 +41,43 @@ async function handlePurchase({proof}) {
   }
 }
 
+function base64ToUint8Array(base64String) {
+  // Crear un Buffer a partir de la cadena base64
+  const buffer = Buffer.from(base64String, 'base64');
+  // Convertir el Buffer a Uint8Array
+  return new Uint8Array(buffer);
+}
 
-export async function generateProof({ pan, expiryDate, cvv}) {
+
+function base64ToObject(base64String) {
+  // Crear un Buffer a partir de la cadena base64
+  const buffer = Buffer.from(base64String, 'base64');
+  // Convertir el Buffer a una cadena JSON
+  const jsonString = buffer.toString('utf-8');
+  // Parsear la cadena JSON a un objeto JavaScript
+  return JSON.parse(jsonString);
+}
+
+
+function uint8ArrayToBase64(uint8Array) {
+  const buffer = Buffer.from(uint8Array);
+  return buffer.toString('base64');
+}
+
+function toBase64(obj) {
+  const jsonString = JSON.stringify(obj);
+  const buffer = Buffer.from(jsonString, 'utf-8');
+  return buffer.toString('base64');
+}
+
+
+async function generateProof({ pan, expiryDate, cvv}) {
   try {
     const backend = new BarretenbergBackend(circuit);
     const noir = new Noir(circuit);
 
     console.log('Generating proof... ⌛');
-    const { witness } = await noir.execute({ pan, expiryDate, cvv, bankKey:"4"});
+    const { witness } = await noir.execute({ pan, expiryDate, cvv, bankKey: "2"});
     const { publicInputs, proof } = await backend.generateProof(witness);
 
     console.log('Generating proof... ✅');
@@ -60,14 +93,11 @@ export async function generateProof({ pan, expiryDate, cvv}) {
   }
 }
 
-export async function handleSave({ email, proof }) {
+async function handleSave({ email, proof, name }) {
   try {
     console.log('Proof:', proof);
-    if (!proofs[email]) {
-      proofs[email] = [];
-    }
-    proofs[email].push(proof);
-
+    const previous_proofs = proofs[email];
+    proofs[email] = {...previous_proofs, [name]: proof};
     return { success: true, message: 'Proof saved successfully.' };
   } catch (err) {
     console.error(err);
@@ -83,17 +113,18 @@ fastify.post('/purchase', async (request, reply) => {
 });
 
 fastify.post('/proofs', async (request, reply) => {
-  const { cvv, pan, expirtyDate } = request.body;
-  const proofResult = await generateProof({ cvv, pan, expirtyDate })
-  const result = await handleSave({proof: proofResult});
+  const { cvv, pan, expiryDate, email, name } = request.body;
+  console.log({cvv, pan, expiryDate, email, name});
+  const proofResult = await generateProof({ cvv, pan, expiryDate })
+  const result = await handleSave({email, proof: proofResult, name});
   reply.send(result);
 });
 
 fastify.get('/proofs', async (request, reply) => {
-  const { cvv, pan, expirtyDate } = request.body;
-  const proofResult = await generateProof({ cvv, pan, expirtyDate })
-  const result = await handleSave({proof: proofResult});
-  reply.send(result);
+  const { email, name } = request.query;
+  const mid = proofs[email];
+  const proof = mid[name];
+  reply.send(proof);
 });
 
 const start = async () => {
