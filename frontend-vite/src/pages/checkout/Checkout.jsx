@@ -88,14 +88,14 @@ function Checkout() {
   return (
     <div className="bg-gray-800 h-screen">
       <h3 className="text-4xl text-center text-white py-8 ">
-        Prueba la nueva capa de seguridad en tiempo real
+      Checkout using a ZeroKey payment method
       </h3>
       {(status === statuses.PENDING ||
         status === statuses.CVV ||
         status === statuses.ZQ) && (
         <div className="bg-white w-[70%] m-auto py-6 rounded shadow shadow-gray-300">
           <p className="text-center text-lg pb-4">
-            Selecciona el método de pago
+          Select the payment method
           </p>
           <SelectedCard startInterval={startInterval} setAuthorized={setAuthorized} setRejected={setRejected} />
         </div>
