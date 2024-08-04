@@ -24,6 +24,38 @@ Aside from filoshopping, the financial industry, especially banks, will save mil
 
 The project consists of three main components:
 
+
+## Folder structure
+
+```bash
+ZEROKEY/
+│
+├── backend/
+│   ├── providers/
+│   ├── routes/
+│   ├── services/
+│   ├── package.json
+│   ├── server.js
+│
+├── circuit/
+│   ├── src/
+│   │   ├── main.nr
+│   ├── target/
+│   ├── Nargo.toml
+│   └── Prover.toml
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── lib/
+│   │   └── pages/
+│   └── package.json
+```
+
+
+
 1. **Circuit Folder:**
    - Contains `main.nr`, used to compile the zkProof circuit in Scroll.
 
@@ -46,7 +78,7 @@ To get started with ZeroKey, follow these steps:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/zerokey.git
+git clone https://github.com/francoperez03/zerokey
 cd zerokey
 ```
 
@@ -67,6 +99,7 @@ npm install
 ### Compile the Circuit
 ```bash
 cd circuit
+nargo check
 nargo compile
 ```
 

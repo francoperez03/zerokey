@@ -3,7 +3,7 @@ import Home from "./components/home/Home"
 
 function LiveDemo() {
   return (
-    <main>
+    <main className="bg-gray-800 h-screen  ">
       <Home />
       <Demo />
     </main>

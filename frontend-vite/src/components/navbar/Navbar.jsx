@@ -10,7 +10,7 @@ function Navbar() {
           </a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href="#problem">Cost of fraud</a>
+          <a href="#problem">Financial impact</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
           <a href="#partners">Partner</a>
@@ -22,10 +22,10 @@ function Navbar() {
           <a href="">Process</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href="">Demo</a>
+          <a href="#demo">Demo</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href="">Conect whith Us</a>
+          <a href="#contact">Conect whith Us</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
           <a href="#about">About us</a>
