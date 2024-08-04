@@ -13,6 +13,7 @@
     "@noir-lang/backend_barretenberg": "^0.31.0",
     "@noir-lang/noir_js": "^0.31.0",
     "axios": "^1.7.3",
+    "dotenv": "^16.4.5",
     "ethers": "^6.13.2",
     "fastify": "^4.28.1",
     "react": "^18.3.1",

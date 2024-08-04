@@ -23,7 +23,7 @@ function Test() {
           headers: {
             "Content-Type": "application/json" // Mantenemos el JSON para simplicidad
           },
-          body: JSON.stringify({proof})
+          body: JSON.stringify({email, name})
         });
         
         if (!response.ok) {
@@ -43,7 +43,7 @@ function Test() {
           email,
           name,
           pan: "1",
-          expiryDate: "4",
+          expiryDate: "2",
           cvv: "7",
           ttl: "8"
         };

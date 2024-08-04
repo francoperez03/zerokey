@@ -5,8 +5,8 @@ async function routes(fastify, options) {
   fastify.post('/proofs', async (request, reply) => {
     const { cvv, pan, expiryDate, email, name, ttl } = request.body;
     try {
-      const proofResult = await generateProof({ cvv, pan, expiryDate, ttl });
-      const result = await handleSave({ email, proof: proofResult, name });
+      const proof = await generateProof({ cvv, pan, expiryDate, ttl });
+      const result = await handleSave({ email, proof, name });
       reply.send(result);
     } catch (error) {
       reply.status(500).send({ success: false, message: 'Error generating proof' });

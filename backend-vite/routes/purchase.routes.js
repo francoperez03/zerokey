@@ -1,9 +1,11 @@
 const { handlePurchase } = require('../services/purchase.services');
+const { getProof } = require('../services/proof.services');
 
 async function routes(fastify, options) {
   fastify.post('/purchase', async (request, reply) => {
-    const { proof } = request.body;
+    const { email, name } = request.body;
     try {
+      const proof = await getProof({ email, name });
       const result = await handlePurchase({ proof });
       reply.send(result);
     } catch (error) {

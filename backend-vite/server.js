@@ -6,16 +6,10 @@ const proofsRoutes = require('./routes/proof.routes');
 const verifyRoutes = require('./routes/verify.routes');
 const purchaseRoutes = require('./routes/purchase.routes');
 
-// Register CORS middleware
-fastify.register(fastifyCors, { 
-  origin: (origin, cb) => {
-    const hostname = new URL(origin).hostname;
-    if (hostname === "localhost") {
-      cb(null, true);
-      return;
-    }
-    cb(new Error("Not allowed"), false);
-  }
+fastify.register(fastifyCors, {
+  origin: '*',
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['Content-Type'],
 });
 
 // Register routes

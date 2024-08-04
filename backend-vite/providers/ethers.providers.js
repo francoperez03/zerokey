@@ -1,12 +1,11 @@
 const { ethers } = require("ethers");
 
-if (typeof import.meta === 'undefined' || !import.meta.env) {
-  require('dotenv').config();
-}
+require('dotenv').config();
 
-const privateKey = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_PRIVATE_KEY : process.env.VITE_PRIVATE_KEY;
-const contractAddress = typeof import.meta !== 'undefined' && import.meta.env ? import.meta.env.VITE_CONTRACT_ADDRESS : process.env.VITE_CONTRACT_ADDRESS;
 
+const privateKey = process.env.VITE_PRIVATE_KEY;
+const contractAddress = process.env.VITE_CONTRACT_ADDRESS;
+console.log({privateKey})
 const provider = new ethers.JsonRpcProvider(`https://sepolia-rpc.scroll.io`);
 
 const wallet = new ethers.Wallet(privateKey, provider);
