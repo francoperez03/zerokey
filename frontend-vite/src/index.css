@@ -25,3 +25,7 @@ body{
   overflow: hidden; /* Oculta cualquier contenido que se desborde */
 }
 
+.relative:hover .absolute {
+  opacity: 1;
+  visibility: visible;
+}
