@@ -1,7 +1,9 @@
 const { Noir } = require('@noir-lang/noir_js');
 const { BarretenbergBackend, BarretenbergVerifier: Verifier } = require('@noir-lang/backend_barretenberg');
 const circuit = require('../../circuit/target/circuit.json');
+const { ethers } = require("ethers");
 
+const { contract, wallet } = require('../providers/ethers.providers')
 let proofs = {};
 
 // function uint8ArrayToBase64(uint8Array) {
@@ -58,26 +60,28 @@ async function handleSave({ email, proof, name }) {
 }
 
 async function handleVerify({ proof }) {
+  const proofArray = base64ToUint8Array(proof.proof);
   try {
-
+    const proofRestored = {
+      proof: proofArray,
+      publicInputs: proof.publicInputs
+    }
     const backend = new BarretenbergBackend(circuit);
 
     console.log('Verifying proof locally... ⌛');
-    console.log('------')
-    const proofArray = base64ToUint8Array(proof.proof);
-    const isValid = await backend.verifyProof({proof: proofArray, publicInputs: proof.publicInputs});
+
+    const isValid = await backend.verifyProof(proofRestored);
 
     if (isValid) {
       console.log('Local verification succeed ✅');
 
       console.log('Verifying proof using smart contract... ⌛');
-      // const proofBytes = ethers.utils.arrayify(proof);
-      // const publicInputsBytes = ethers.utils.arrayify(publicInputs);
+      console.log(proof.proof.toString('base64'))
+      console.log( '????:', proof.publicInputs)
+      const tx = await contract.sendProof(proofArray, proof.publicInputs);
 
-      // const tx = await contract.verifyProof(proofBytes, publicInputsBytes);
-
-      // console.log('Contract verified!:', receipt);
-      // const receipt = await tx.wait();
+      console.log('Contract verified!:', receipt);
+      const receipt = await tx.wait();
       return { success: true, proof: proof.proof };
     } else {
       return { success: false, message: 'Proof verification failed locally.' };
