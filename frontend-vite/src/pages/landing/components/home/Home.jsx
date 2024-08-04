@@ -18,9 +18,9 @@ function Home() {
             </p>
           </div>
           <img
-            src="/assets/creditCardImage.webp"
+            src="/assets/creditCard.jpg"
             alt="Credit Card"
-            className="w-[300px] rounded-2xl"
+            className="w-[450px] rounded-2xl"
           />
         </div>
         <a href="#problem">

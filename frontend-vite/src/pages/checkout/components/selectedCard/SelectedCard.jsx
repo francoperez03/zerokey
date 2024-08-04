@@ -14,7 +14,7 @@ const cardStates = {
 
 
 
-function SelectedCard({ startInterval }) {
+function SelectedCard({ startInterval, setAuthorized, setRejected }) {
   const { status, setStatus, statuses } = useStore();
   const [selectedCard, setSelectedCard] = useState(null);
 
@@ -41,42 +41,42 @@ function SelectedCard({ startInterval }) {
       <div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.CVV)}
+          onClick={() => {handleCardSelection(cardStates.CVV); setAuthorized()}}
         >
           <h3>Tarjeta Mastercard terminada en 9954</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.CVV)}
+          onClick={() =>  {handleCardSelection(cardStates.CVV); setAuthorized()}}
         >
           <h3>Tarjeta Visa terminada en 1005</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.ZQ)}
+          onClick={() => {handleCardSelection(cardStates.ZQ); setAuthorized()}}
         >
           <h3>Zerokey Visa HSBC Amazon</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.ZQ)}
+          onClick={() =>  {handleCardSelection(cardStates.ZQ); setRejected()}}
         >
           <h3>Zerokey Visa HSBC Uber</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.ZQ)}
+          onClick={() => {handleCardSelection(cardStates.ZQ); setRejected()}}
         >
           <h3>Zerokey Visa HSBC Adidas</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => handleCardSelection(cardStates.ZQ)}
+          onClick={() =>  {handleCardSelection(cardStates.ZQ); setRejected()}}
         >
           <h3>Zerokey Visa HSBC Levis</h3>
           <IoIosArrowForward />
