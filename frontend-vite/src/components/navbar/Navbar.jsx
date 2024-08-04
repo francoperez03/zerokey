@@ -10,7 +10,7 @@ function Navbar() {
           </a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
-          <a href="#problem">Impacto financiero</a>
+          <a href="#problem">Financial impact</a>
         </li>
         <li className="hover:cursor-pointer hover:text-red-500">
           <a href="#partners">Partner</a>

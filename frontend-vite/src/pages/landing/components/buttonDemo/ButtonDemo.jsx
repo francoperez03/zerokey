@@ -4,10 +4,10 @@ import React from "react";
 function ButtonDemo() {
   return (
     <section
-      className="flex flex-col justify-center bg-gray-800 w-full m-auto py-6"
+      className="flex flex-col justify-center bg-gray-800 w-full m-auto py-12"
       id="demo"
     >
-      <h3 className="text-5xl text-center py-4 font-medium text-white">
+      <h3 className="text-5xl text-center   pb-12 font-medium text-white">
         Live Demo
       </h3>
       <div className="flex gap-12 m-auto">
