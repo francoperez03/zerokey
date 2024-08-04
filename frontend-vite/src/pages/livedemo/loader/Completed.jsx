@@ -21,19 +21,15 @@ function Completed() {
   };
   return (
     <div>
-      <div className="flex flex-col gap-4 h-[450px] w-96 p-4 justify-center items-center bg-slate-50 rounde shadow-md shadow-gray-500">
+      <div className="flex flex-col gap-4 h-[450px] w-96 p-4 justify-between py-12 items-center bg-slate-50 rounde shadow-md shadow-gray-500">
         <FaCheck className="text-[100px] text-green-800 mb-12" />
         <p className="text-2xl font-medium text-center">
-          Successfully generated test
+          Proof Generated Successfully
         </p>
         <span className="w-full border-t border-gray-400"></span>
-        <p className="text-md font-medium">
-          Generated Test <span className=" font-medium">
-            {generateAlphaNumericCode()}...{generateAlphaNumericCode()}
-          </span>
-        </p>
+        
         <p className="text-[10px] text-center">
-          Your CVV Code was protected with{" "}
+        Your card data was protected with{" "}
           <span className="font-bold text-blue-600">ZK Knowledge Proof</span>{" "}
           technology
         </p>

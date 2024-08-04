@@ -45,7 +45,7 @@ function Demo() {
       {status === statuses.PENDING && (
         <div>
           <h5 className="text-lg pb-2 text-center text-white">
-            Enter fictitious card information
+            Register a Card
           </h5>
             <Checkout startInterval={startInterval} />
         </div>

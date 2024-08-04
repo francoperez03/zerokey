@@ -58,6 +58,29 @@ function Checkout({ startInterval }) {
   return (
     <div className="flex gap-12 shadow-md shadow-gray-300 bg-white p-6">
       <div className="flex flex-col gap-6 size-96 border p-4 rounded  m-auto bg-gray-50">
+        
+        <div className="flex flex-col gap-2">
+          <div className="relative inline-block">
+            <label className="flex gap-1 items-center text-sm">
+              Domain URL
+              <span className="relative">
+                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
+                <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  This is the only website where you can use this proof.
+                  <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
+                </div>
+              </span>
+            </label>
+          </div>
+          <Input
+            type="text"
+            name="url"
+            className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
+            placeholder="www.amazon.com"
+            value={form.url}
+            onChange={handleForm}
+          />
+        </div>
         <div className="flex flex-col gap-2">
           <div className="relative inline-block h-sm">
             <label className="flex gap-1 items-center text-sm">
@@ -65,7 +88,8 @@ function Checkout({ startInterval }) {
               <span className="relative">
                 <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  Domain URL
+                  This is the only email with which you can use this proof for
+                  the domain you entered.
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
                 </div>
               </span>
@@ -83,33 +107,11 @@ function Checkout({ startInterval }) {
         <div className="flex flex-col gap-2">
           <div className="relative inline-block">
             <label className="flex gap-1 items-center text-sm">
-              Domain URL
-              <span className="relative">
-                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
-                <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  Información adicional aquí
-                  <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
-                </div>
-              </span>
-            </label>
-          </div>
-          <Input
-            type="text"
-            name="url"
-            className="w-full bg-white text-black py-2 rounded-xl placeholder:text-gray-400"
-            placeholder="www.amazon.com"
-            value={form.url}
-            onChange={handleForm}
-          />
-        </div>
-        <div className="flex flex-col gap-2">
-          <div className="relative inline-block">
-            <label className="flex gap-1 items-center text-sm">
               Card Alias
               <span className="relative">
                 <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  Información adicional aquí
+                This is the name with which you can identify this proof
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
                 </div>
               </span>
@@ -131,7 +133,7 @@ function Checkout({ startInterval }) {
               <span className="relative">
                 <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                  Información adicional aquí
+                You can only use this proof for the number of days you indicate here. After that, you must generate a new proof
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
                 </div>
               </span>
@@ -202,10 +204,11 @@ function Checkout({ startInterval }) {
             />
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col mt-2 gap-2">
+          <span className="text-[10px] text-center">Your card details will NOT be stored</span>
           <Button
             variant="outline"
-            className="w-full bg-white text-black mt-6  rounded-xl "
+            className="w-full bg-white text-black   rounded-xl "
             onClick={() => {
               startInterval();
               postTest(form);
