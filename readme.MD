@@ -22,10 +22,10 @@ Aside from filoshopping, the financial industry, especially banks, will save mil
 
 ## Project Structure
 
-The project consists of three main components:
+### Contrato verificador
+[Contrato verificado  en ScrollScan](https://sepolia.scrollscan.com/address/0x31563b09193329e6836144c54d81e8d25453908e#code)
 
-
-## Folder structure
+### Folder structure
 
 ```bash
 ZEROKEY/
@@ -55,15 +55,17 @@ ZEROKEY/
 ```
 
 
+1. **Backend:**
+   - Implements several endpoints for proof management and transaction processing.
 
-1. **Circuit Folder:**
+
+2. **Circuit:**
    - Contains `main.nr`, used to compile the zkProof circuit in Scroll.
 
 2. **Frontend:**
    - Provides a user interface to add credit cards and make payments using a proof of a card.
 
-3. **Backend:**
-   - Implements several endpoints for proof management and transaction processing.
+
 
 ## Installation
 
