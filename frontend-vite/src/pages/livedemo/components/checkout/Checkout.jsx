@@ -172,7 +172,7 @@ function Checkout({ startInterval }) {
         </div>
         <div className="flex gap-2  ">
           <div className="flex flex-col w-full gap-2">
-            <Label>Expiry</Label>
+            <Label>Expiry Date</Label>
             <div className="flex gap-2  ">
               <SelectInput
                 options={months}
