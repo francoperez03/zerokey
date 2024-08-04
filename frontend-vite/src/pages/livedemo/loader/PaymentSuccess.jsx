@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import React from "react";
 import { FaCheck } from "react-icons/fa";
 
-function Completed() {
+function PaymentSuccess() {
   const generateRandomNumber = () => {
     return Math.floor(Math.random() * 100000000)
       .toString()
@@ -38,15 +38,19 @@ function Completed() {
           technology
         </p>
         <div className="flex gap-4">
-        <a href="/#demo" target="_blank" rel="noopener noreferrer">
-        <Button className="rounded w-28 hover:text-red-500" variant="outline">
+          <Button className="rounded w-28 hover:bg-red-500" variant="outline">
             Back
           </Button>
-        </a>
+          <Button
+            className="rounded w-28 hover:bg-red-500   "
+            variant="outline"
+          >
+            See Tests
+          </Button>
         </div>
       </div>
     </div>
   );
 }
 
-export default Completed;
+export default PaymentSuccess;

@@ -56,7 +56,7 @@ function Checkout({ startInterval }) {
   };
 
   return (
-    <div className="flex gap-12 shadow-md shadow-gray-300 p-6">
+    <div className="flex gap-12 shadow-md shadow-gray-300 bg-white p-6">
       <div className="flex flex-col gap-6 size-96 border p-4 rounded  m-auto bg-gray-50">
         <div className="flex flex-col gap-2">
           <div className="relative inline-block h-sm">
