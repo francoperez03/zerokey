@@ -43,7 +43,7 @@ function SelectedCard({ startInterval }) {
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
           onClick={() => handleCardSelection(cardStates.CVV)}
         >
-          <h3>Tarjeta Mastercard terminada en 1075</h3>
+          <h3>Tarjeta Mastercard terminada en 9954</h3>
           <IoIosArrowForward />
         </div>
         <div
@@ -71,14 +71,14 @@ function SelectedCard({ startInterval }) {
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
           onClick={() => handleCardSelection(cardStates.ZQ)}
         >
-          <h3>Zerokey Visa HSBC Uber</h3>
+          <h3>Zerokey Visa HSBC Adidas</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
           onClick={() => handleCardSelection(cardStates.ZQ)}
         >
-          <h3>Zerokey Visa HSBC Uber</h3>
+          <h3>Zerokey Visa HSBC Levis</h3>
           <IoIosArrowForward />
         </div>
       </div>

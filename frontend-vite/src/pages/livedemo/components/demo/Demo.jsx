@@ -44,7 +44,7 @@ function Demo() {
     <div className="flex flex-col items-center justify-center">
       {status === statuses.PENDING && (
         <div>
-          <h5 className="text-lg pb-2 text-center">
+          <h5 className="text-lg pb-2 text-center text-white">
             Enter fictitious card information
           </h5>
             <Checkout startInterval={startInterval} />

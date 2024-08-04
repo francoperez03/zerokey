@@ -3,7 +3,8 @@ import React from "react";
 function Cart() {
   return (
     <div className="size-72 flex flex-col py-12 items-center justify-between border rounded">
-      <h3 className="text-xl font-bold">Resumen de compra</h3>
+      <span className="text-gray-500">www.amazon.com</span>
+      <h3 className="text-xl font-bold -mt-20">Resumen de compra</h3>
       <span className="w-full border border-gray-400"></span>
       <div className="w-full px-8">
         <div className="flex justify-between items-center">
@@ -11,7 +12,7 @@ function Cart() {
           <p>$5.00</p>
         </div>
         <div className="flex justify-between items-center">
-          <p>Frites</p>
+          <p>Ebook</p>
           <p>$25.00</p>
         </div>
         <div className="flex justify-between items-center">
@@ -21,7 +22,7 @@ function Cart() {
       </div>
 
       <div>
-        <h3 className="text-2xl font-bold">Total: $40.00</h3>
+        <h3 className="text-2xl font-bold">Total: $45.00</h3>
       </div>
     </div>
   );
