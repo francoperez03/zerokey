@@ -107,7 +107,7 @@ async function handleSave({ email, proof, name }) {
 
 fastify.post('/purchase', async (request, reply) => {
   const { proof } = request.body;
-  const result = await handlePurchase({proof});
+  const result = await handleVerify({proof});
   reply.send(result);
 });
 
