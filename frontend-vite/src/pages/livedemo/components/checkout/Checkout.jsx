@@ -59,11 +59,11 @@ function Checkout({ startInterval }) {
     <div className="flex gap-12 shadow-md shadow-gray-300 p-6">
       <div className="flex flex-col gap-6 size-96 border p-4 rounded  m-auto bg-gray-50">
         <div className="flex flex-col gap-2">
-          <div className="relative inline-block">
-            <label className="flex gap-1 items-center">
+          <div className="relative inline-block h-sm">
+            <label className="flex gap-1 items-center text-sm">
               Email
               <span className="relative">
-                <FiInfo className="text-blue-500 cursor-pointer group" />
+                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   Operating URL
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
@@ -82,10 +82,10 @@ function Checkout({ startInterval }) {
         </div>
         <div className="flex flex-col gap-2">
           <div className="relative inline-block">
-            <label className="flex gap-1 items-center">
+            <label className="flex gap-1 items-center text-sm">
               Operating URL
               <span className="relative">
-                <FiInfo className="text-blue-500 cursor-pointer group" />
+                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   Información adicional aquí
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
@@ -104,10 +104,10 @@ function Checkout({ startInterval }) {
         </div>
         <div className="flex flex-col gap-2">
           <div className="relative inline-block">
-            <label className="flex gap-1 items-center">
+            <label className="flex gap-1 items-center text-sm">
               Card Alias
               <span className="relative">
-                <FiInfo className="text-blue-500 cursor-pointer group" />
+                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   Información adicional aquí
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
@@ -126,10 +126,10 @@ function Checkout({ startInterval }) {
         </div>
         <div className="flex flex-col gap-2">
           <div className="relative inline-block">
-            <label className="flex gap-1 items-center">
+            <label className="flex gap-1 items-center text-sm">
               Utility Days
               <span className="relative">
-                <FiInfo className="text-blue-500 cursor-pointer group" />
+                <FiInfo className="text-blue-500 cursor-pointer group text-[12px]" />
                 <div className="absolute left-1/2 transform -translate-x-1/2 bottom-full mb-2 w-48 bg-black text-white text-sm rounded py-2 px-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   Información adicional aquí
                   <div className="absolute bottom-[-5px] left-1/2 transform -translate-x-1/2 w-0 h-0 border-x-4 border-x-transparent border-t-4 border-t-black"></div>
@@ -149,7 +149,7 @@ function Checkout({ startInterval }) {
       </div>
       <div className="flex flex-col gap-6 size-96 border p-4 rounded   m-auto bg-gray-50">
         <div className="flex flex-col gap-2">
-          <Label className="">Name on Card</Label>
+          <Label className="h-[20px] flex items-center">Name on Card</Label>
           <Input
             type="text"
             name="name"
@@ -160,7 +160,7 @@ function Checkout({ startInterval }) {
           />
         </div>
         <div className="flex flex-col gap-2">
-          <Label className="">Card Number</Label>
+          <Label className="h-[20px] flex items-center">Card Number</Label>
           <Input
             type="text"
             name="cardNumber"
@@ -191,7 +191,7 @@ function Checkout({ startInterval }) {
             </div>
           </div>
           <div className="flex flex-col gap-2">
-            <Label>CVV</Label>
+            <Label className="">CVV</Label>
             <Input
               type="text"
               className=" bg-white text-black py-2 rounded-xl placeholder:text-gray-400"

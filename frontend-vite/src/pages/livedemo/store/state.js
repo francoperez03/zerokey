@@ -4,10 +4,14 @@ const useStore = create((set) => ({
   status: 'pendiente', // Estado inicial
   setStatus: (newStatus) => set({ status: newStatus }),
   statuses: {
+    INICIO: 'inicio',
     PENDING: 'pendiente',
+    CVV: 'cvv',
+    ZQ: 'zq',
     GENERATING: 'generando',
     PAYING: 'pagando',
-    COMPLETED: 'finalizado'
+    COMPLETED: 'finalizado',
+    ERROR: 'error'
   }
 }));
 
