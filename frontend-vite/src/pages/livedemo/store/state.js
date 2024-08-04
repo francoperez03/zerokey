@@ -11,7 +11,11 @@ const useStore = create((set) => ({
     GENERATING: 'generando',
     PAYING: 'pagando',
     COMPLETED: 'finalizado',
-    ERROR: 'error'
+    ERROR: 'error',
+    PAYINGZQ: 'pagandoZQ',
+    PAYINGCVV: 'pagandoCVV',
+
+
   }
 }));
 

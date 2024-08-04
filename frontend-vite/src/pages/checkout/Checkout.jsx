@@ -14,30 +14,35 @@ function Checkout() {
 
   // Define el intervalo para los cambios de estado que requieren tres intervalos
   const handleZQStatus = () => {
+  setStatus(statuses.GENERATING); // Cambia a 'generando'
+
+  // Cambia a 'verificando' después de 3 segundos
+  setTimeout(() => {
     setStatus(statuses.VERIFICANDO); // Cambia a 'verificando'
-  
-    // Cambia a 'pagando' después de 3 segundos
+
+    // Cambia a 'pagando' después de otros 3 segundos
     setTimeout(() => {
-      setStatus(statuses.PAYING);
-  
+      setStatus(statuses.PAYING); // Cambia a 'pagando'
+
       // Cambia a 'finalizado' después de otros 3 segundos
       setTimeout(() => {
-        setStatus(statuses.COMPLETED);
+        setStatus(statuses.COMPLETED); // Cambia a 'finalizado'
         setIsActive(false); // Detiene el ciclo
-      }, 0); // Cambia a 'finalizado' inmediatamente, sin espera
+      }, 0); // Cambia a 'finalizado' después de otros 3 segundos
     }, 3000); // Cambia a 'pagando' después de 3 segundos
-  };
+  }, 3000); // Cambia a 'verificando' después de 3 segundos
+};
   
 
   // Define el intervalo para los cambios de estado que requieren dos intervalos
   const handleCVVStatus = () => {
-    setStatus(statuses.PAYING); // Cambia a 'pagando'
+    setStatus(statuses.PAYINGCVV); // Cambia a 'pagando'
   
     // Cambia a 'finalizado' inmediatamente después de cambiar a 'pagando'
     setTimeout(() => {
       setStatus(statuses.COMPLETED); // Cambia a 'finalizado'
       setIsActive(false); // Detiene el ciclo
-    }, 0); // Cambia a 'finalizado' inmediatamente
+    }, 3000); // Cambia a 'finalizado' inmediatamente
   };
   
 
@@ -45,7 +50,6 @@ function Checkout() {
   const startInterval = () => {
     if (intervalId) return; // Si ya hay un intervalo en curso, no iniciar uno nuevo
 
-    setStatus(statuses.GENERATING); // Cambia a 'generando'
     setIsActive(true);
 
     let id;
@@ -54,13 +58,13 @@ function Checkout() {
       id = setTimeout(() => {
         handleCVVStatus();
         clearTimeout(id); // Limpia el timeout
-      }, 3000); // Cambia a 'pagando' después de 3 segundos
+      }, 0); // Cambia a 'pagando' después de 3 segundos
 
     } else if (status === statuses.ZQ) {
       id = setTimeout(() => {
         handleZQStatus();
         clearTimeout(id); // Limpia el timeout
-      }, 3000); // Cambia a 'verificando' después de 3 segundos
+      }, 0); // Cambia a 'verificando' después de 3 segundos
     }
 
     setIntervalId(id);
@@ -92,6 +96,7 @@ function Checkout() {
         {status === statuses.GENERATING && <Validated />}
         {status === statuses.VERIFICANDO && <Payment />}
         {status === statuses.COMPLETED && <PaymentSuccess />}
+        {status === statuses.PAYINGCVV && <div> pagando con cvv </div>}
       </div>
     </div>
   );
