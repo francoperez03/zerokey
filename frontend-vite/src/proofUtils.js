@@ -1,4 +1,4 @@
-import circuit from '../../hello_world/target/hello_world.json';
+import circuit from '../../hello_world/target/circuit.json';
 import { BarretenbergBackend} from '@noir-lang/backend_barretenberg';
 import { Noir } from '@noir-lang/noir_js';
 

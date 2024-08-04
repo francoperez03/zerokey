@@ -1,6 +1,6 @@
 const fastify = require('fastify')({ logger: true });
 const fastifyCors = require('@fastify/cors');
-const circuit = require('../circuit/target/hello_world.json');
+const circuit = require('../circuit/target/circuit.json');
 const { BarretenbergBackend, BarretenbergVerifier: Verifier } = require('@noir-lang/backend_barretenberg');
 const { Noir } = require('@noir-lang/noir_js');
 let proofs = {};
@@ -125,7 +125,7 @@ fastify.get('/proofs', async (request, reply) => {
   reply.send(proof);
 });
 
-fastify.post('/verify', async (proof, ) => {
+fastify.post('/verify', async (request, reply ) => {
   const { proof } = request.body;
   const proofResult = await handleVerify({ proof })
   const result = await handleSave({proof: proofResult});
