@@ -72,6 +72,7 @@ function Test() {
       try {
         const response = await fetch(`http://localhost:3000/proofs?email=${emailSearch}&name=${nameSearch}`);
         if (!response.ok) {
+          console.log(response)
           throw new Error("Error en la solicitud");
         }
 
