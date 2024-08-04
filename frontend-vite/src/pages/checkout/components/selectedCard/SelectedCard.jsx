@@ -15,7 +15,7 @@ const cardStates = {
 
 
 function SelectedCard({ startInterval, setAuthorized, setRejected }) {
-  const { status, setStatus, statuses } = useStore();
+  const { status, setStatus, statuses , isBoolean, toggleBoolean, setBoolean} = useStore();
   const [selectedCard, setSelectedCard] = useState(null);
 
   console.log(status);
@@ -41,16 +41,16 @@ function SelectedCard({ startInterval, setAuthorized, setRejected }) {
       <div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() => {handleCardSelection(cardStates.CVV); setAuthorized()}}
+          onClick={() => {handleCardSelection(cardStates.CVV); setAuthorized() ; setBoolean(false)}}
         >
-          <h3>Tarjeta Mastercard terminada en 9954</h3>
+          <h3>Mastercard card ending in 9954</h3>
           <IoIosArrowForward />
         </div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
-          onClick={() =>  {handleCardSelection(cardStates.CVV); setAuthorized()}}
+          onClick={() =>  {handleCardSelection(cardStates.CVV); setAuthorized() ; setBoolean(false)}}
         >
-          <h3>Tarjeta Visa terminada en 1005</h3>
+          <h3>Visa card ending in 1076</h3>
           <IoIosArrowForward />
         </div>
         <div
@@ -90,18 +90,18 @@ function SelectedCard({ startInterval, setAuthorized, setRejected }) {
             className="w-full text-black rounded hover:text-red-500 "
             onClick={()=>startInterval()}
           >
-            Pagar
+            PAY
           </Button>
         )}
         {status === statuses.CVV && (
           <div className="flex gap-4">
-            <Input type="text" placeholder="CVC" className="rounded" />
+            <Input type="text" placeholder="CVV/CVC" className="rounded" />
             <Button
               variant="outline"
               className="w-full text-black rounded hover:text-red-500 "
               onClick={()=>startInterval()}
             >
-              Pagar
+              PAY
             </Button>
           </div>
         )}

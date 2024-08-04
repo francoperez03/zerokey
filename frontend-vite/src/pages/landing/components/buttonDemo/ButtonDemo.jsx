@@ -13,12 +13,12 @@ function ButtonDemo() {
       <div className="flex gap-12 m-auto">
         <a href="/generate" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="text-white hover:text-red-600">
-            Live Demo Generar Prueba
+            Generate Proof Live Demo
           </Button>
         </a>
         <a href="/checkout" target="_blank" rel="noopener noreferrer">
           <Button variant="outline" className="text-white hover:text-red-600">
-            Live Demo Checkout
+           Checkout Live Demo 
           </Button>
         </a>
       </div>
