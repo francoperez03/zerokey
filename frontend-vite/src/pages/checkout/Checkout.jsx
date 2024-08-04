@@ -72,7 +72,7 @@ function Checkout() {
   }, [intervalId]);
 
   return (
-    <div>
+    <div className="">
       <h3 className="text-3xl text-center py-12">
         Prueba la nueva capa de seguridad en tiempo real
       </h3>

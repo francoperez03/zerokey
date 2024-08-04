@@ -12,6 +12,8 @@ const cardStates = {
   PAYING: "pagando",
 };
 
+
+
 function SelectedCard({ startInterval }) {
   const { status, setStatus, statuses } = useStore();
   const [selectedCard, setSelectedCard] = useState(null);
@@ -35,7 +37,7 @@ function SelectedCard({ startInterval }) {
   };
 
   return (
-    <section className="flex  m-auto h-screen w-full items-start justify-center  gap-12 ">
+    <section className="flex  m-auto   w-full items-start justify-center  gap-12 ">
       <div>
         <div
           className="p-4 w-96 rounded  border flex items-center justify-between hover:cursor-pointer hover:text-red-500"
